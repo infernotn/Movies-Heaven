@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { HiSearch } from "react-icons/hi";
+import { MovieCard } from "./MovieCard";
 
 function App() {
+  const api_url = "http://www.omdbapi.com?apikey=c013032f";
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const searchMovieas = async (title) => {
+    const response = await fetch(`${api_url}&s=${title}`);
+    const data = await response.json();
+    await setMovies(data.Search);
+    console.log(data.Search);
+    console.log(movies);
+  };
+  useEffect(() => {
+    searchMovieas(searchTerm);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-screen min-h-screen pt-10 pb-10 flex flex-col justify-start items-center  bg-slate-700">
+      <h1 className="font-extrabold text-transparent text-5xl  bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-600 to-cyan-700 text-opacity-70 ">
+        Movies Heaven
+      </h1>
+
+      <div className="w-[60%] md:w-[30%]  mt-5 flex bg-slate-800 bg-opacity-0 focus-within:bg-opacity-50 justify-center items-center rounded-md p-1 opacity-85">
+        <input
+          className="w-[90%] h-10 text-lg pl-2 bg-transparent border-none text-slate-50 text opacity-30 focus-within:text-white  focus-within:text-opacity-100 "
+          placeholder="search for a movie"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+        />
+        <HiSearch
+          className="flex w-[10%]  justify-center items-center  text-white   text-2xl hover:cursor-pointer hover:scale-110"
+          onClick={() => searchMovieas(searchTerm)}
+        />
+      </div>
+      <div className="w-screen mt-14 flex flex-wrap justify-center items-center gap-x-10 gap-y-14 ">
+        {movies?.length > 0
+          ? movies.map((movie) => {
+              return <MovieCard movie={movie} />;
+            })
+          : ""}
+      </div>
     </div>
   );
 }
