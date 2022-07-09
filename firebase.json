@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "MoviesHeaven",
+    "public": "p",
     "ignore": [
       "firebase.json",
       "**/.*",
