@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Movies-Heaven/static/css/main.fc573385.css",
+    "main.js": "/Movies-Heaven/static/js/main.6ffe5ce8.js",
+    "index.html": "/Movies-Heaven/index.html",
+    "main.fc573385.css.map": "/Movies-Heaven/static/css/main.fc573385.css.map",
+    "main.6ffe5ce8.js.map": "/Movies-Heaven/static/js/main.6ffe5ce8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc573385.css",
+    "static/js/main.6ffe5ce8.js"
+  ]
+}
