@@ -4,7 +4,7 @@ import { MovieCard } from "./MovieCard";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 function App() {
-  const api_url = "http://www.omdbapi.com?apikey=c013032f";
+  const api_url = "https://www.omdbapi.com?apikey=c013032f";
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const searchMovieas = async (title) => {
